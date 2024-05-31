@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My First Web Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+  <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-vh lg:py-12">
+      <div
+        class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-6 space-y-4 md:space-y-6 sm:px-8" style="padding-bottom: 0px;">
+          <h1
+            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white flex justify-start items-center">
+            Estado del dispositivo
+            <div id="estado" class="ml-2">
+              <span
+                class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">DESCONECTADO</span>
+            </div>
+
+          </h1>
+          <form class="space-y-4 md:space-y-6" aria-disabled="true">
+            <div class="flex">
+              <button id="conectar" onclick="connect()" type="button"
+                class="flex-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Conectarse</button>
+              <button id="desconectar" onclick="disconnect()" disabled type="button"
+                class="flex-1 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Desconectarse</button>
+            </div>
+
+          </form>
+        </div>
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            Acciones de usuario
+          </h1>
+          <form class="space-y-4 md:space-y-6" aria-disabled="true">
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 0</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(0)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                LED ON
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 1</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(1)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MOTOR DER
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 2</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(2)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MOTOR IZQ
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 3</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(3)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                CONTADOR (0-F)
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 4</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(4)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                CONTADOR (F-0)
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 5</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(5)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MOTOR DER, LED ON
+              </button>
+
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 6</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(6)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MOTOR IZQ, LED ON
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 7</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(7)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                LED DISCO
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 8</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(8)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MUS + LED
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 9</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(9)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                BOCINA (BEEP) + IZQ
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 10</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(10)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                RGB
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 11</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(11)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                BOCINA (CLAXON) + DER
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 12</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(12)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MATRIZ (ABECEDARIO)
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 13</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(13)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MATRIZ (ON-OFF)
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 14</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(14)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MATRIZ (CUADRO)
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 15</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(15)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MATRIZ (FIME-IEC)
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 16 (extra)</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(16)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MATRIZ (MATRICULAS)
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 17 (extra)</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(17)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MOTOR (ADELANTE)
+              </button>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Acción 18 (extra)</label>
+              <button
+                type="button"
+                disabled
+                onclick="sendTextMessage(18)"
+                class="botones w-full py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                MOTOR (ATRAS)
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+<!-- <button onclick="connect()">Conectar</button>
+
+<button onclick="disconnect()">Desconectar</button>
+
+
+<input type="text" id="message" value="5">
+<button onclick="sendTextMessage(document.getElementById('message').value)">Enviar</button> -->
+
+<script>
+  let device;
+  const serviceUuid = '6E400001-B5A3-F393-E0A9-E50E24DCCA9E'.toLowerCase(); // Reemplaza con el UUID del servicio en tu ESP32
+  const characteristicUuid = '6E400002-B5A3-F393-E0A9-E50E24DCCA9E'.toLowerCase(); // Reemplaza con el UUID de la característica en tu ESP32
+
+  function onDisconnected() {
+    console.log('Desconectado del dispositivo Bluetooth.');
+    document.getElementById('estado').innerHTML = '<span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">DESCONECTADO</span>';
+    document.getElementById('conectar').disabled = false;
+    document.getElementById('desconectar').disabled = true;
+
+    document.querySelectorAll('.botones').forEach((button) => {
+      button.disabled = true;
+    });
+  }
+
+  async function connect() {
+    try {
+      device = await navigator.bluetooth.requestDevice({
+        filters: [{ name: 'ESP32' }],
+        optionalServices: [serviceUuid]
+      });
+      console.log('Conectado a: ' + device.name);
+      const server = await device.gatt.connect();
+      const service = await server.getPrimaryService(serviceUuid);
+      const characteristic = await service.getCharacteristic(characteristicUuid);
+      device.addEventListener('gattserverdisconnected', onDisconnected);
+      document.getElementById('estado').innerHTML = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">CONECTADO</span>';
+      document.getElementById('conectar').disabled = true;
+      document.getElementById('desconectar').disabled = false;
+
+      document.querySelectorAll('.botones').forEach((button) => {
+        button.disabled = false;
+      });
+    } catch (error) {
+      alert('Error de conexión Bluetooth: ' + error);
+    }
+  }
+
+  function disconnect() {
+    try {
+      if (device && device.gatt.connected) {
+        device.gatt.disconnect();
+        console.log('Desconectado del dispositivo Bluetooth.');
+      }
+
+      onDisconnected();
+    } catch (error) {
+      alert('Error al desconectar: ', error);
+    }
+  }
+
+  async function sendTextMessage(message) {
+    try {
+      // Verifica si el dispositivo está conectado
+      if (!device || !device.gatt.connected) {
+        alert('No se ha establecido una conexión Bluetooth.');
+        return;
+      }
+
+      const service = await device.gatt.getPrimaryService(serviceUuid);
+      const characteristic = await service.getCharacteristic(characteristicUuid);
+
+      // Convierte el mensaje en un ArrayBuffer (datos binarios)
+      const encoder = new TextEncoder();
+      const data = encoder.encode(message);
+
+      // Escribe los datos en la característica
+      await characteristic.writeValue(data);
+
+      console.log('Mensaje enviado con éxito:', message);
+    } catch (error) {
+      alert('Error al enviar el mensaje:', error);
+    }
+  }
+
+</script>
+
+</html>
