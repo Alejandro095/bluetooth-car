@@ -1,0 +1,9 @@
+{
+  "name": "bluetooth-car",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web-based remote control for an ESP32 robotic car over Bluetooth Low Energy.",
+  "engines": {
+    "node": "24.x"
+  }
+}
